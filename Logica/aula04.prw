@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-//Comandos de repetição
+//Comandos de repetição (For)
 user function aula04()
 
 	Local aNotas := {'7','5','10'} //array de notas 

@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-
+//Comandos para opção de menu (case)
 user function aula03()
 
 	local nOpcao := 1
