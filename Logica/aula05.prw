@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-
+//Estrutura de repetição (while)
 user function aula05()
 
 	Local lLogic := .T.

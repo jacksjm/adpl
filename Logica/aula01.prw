@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-//Fonte Geral: Comandos de seleção ou decisão (if, else, endif)
+//Estrutura de decisão (if, else, endif)
 user function aula01()
 
 	Local cVar := 'achei'
