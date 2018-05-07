@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-
+//Acessando tabelas do banco de dados
 user function Banco001()
 	Local aArea := SB1->(GetArea()) //Referência a tabela que queremos acessar no Protheus
 		

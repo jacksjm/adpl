@@ -1,6 +1,6 @@
 #include 'protheus.ch'
 #include 'parmtype.ch'
-
+//Índices
 user function Banco002()
 	Local aArea := SB1->(GetArea())
 	Local cMsg := ""
