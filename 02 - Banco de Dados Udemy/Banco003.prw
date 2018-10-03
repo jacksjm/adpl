@@ -3,35 +3,35 @@
 #include 'TopConn.ch'
 //Consultas SQL com ADVPL
 user function Banco003()
-	
-	Local aArea := SB1->(GetArea())
-	Local cQuery := ""
-	Local aDados := []
-	
-	cQuery := " SELECT "
-	cQuery += " B1_COD AS CODIGO, "
-	cQuery += " B1_DESK AS DESCRICAO "
-	cQuery += " FROM"
-	cQuery += " "+ RetSQLName("SB1")+ "SB1"
-	cQuery += " WHERE "
-	cQuery += " B1_MSBLQL != '1' "
-	
-	//Executando a consulta acima
-	TCQuery cQuery New Alias "TMP"
-	
-	While ! TMP->(EoF())
-		AADD(aDados, TMP->CODIGO)
-		AADD(aDados, TMP->DESCRICAO)
-		TMP->(Dbskip())
+
+	Local aArea   := SB1->( GetArea() )
+	Local cNewAls := GetNextAlias()
+	Local aDados  := []
+
+	BeginSQL Alias cNewAls
+		SELECT
+			SB1.B1_COD AS CODIGO,
+			SB1.B1_DESC AS DESCRICAO
+		FROM
+			%table:SB1% SB1
+		WHERE
+			SB1.B1_MSBLQL != '1' AND
+			SB1.%notDel%
+	EndSQL
+
+	While ! ( cNewAls )->( EoF() )
+		AADD( aDados, ( cNewAls )->CODIGO )
+		AADD( aDados, ( cNewAls )->DESCRICAO )
+		( cNewAls )->( Dbskip() )
 	EndDO
-	
-	Alert(Len(aDados))
-	
-	For nCount := 1 To Len(aDados)
-		MsgInfo(aDados[nCount])
+
+	Alert( Len( aDados ) )
+
+	For nCount := 1 To Len( aDados )
+		MsgInfo( aDados[ nCount ] )
 	Next nCount
-	
-	TMP->(DbCloseArea())
-	RestArea(aArea)
-	
+
+	( cNewAls )->( DbCloseArea() )
+	RestArea( aArea )
+
 return
